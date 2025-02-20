@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven CV Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>AI-Driven CV Analysis</h1>
+
+    <form id="upload-form" method="POST" enctype="multipart/form-data" action="/upload">
+        <label for="job-description">Enter Job Description:</label>
+        <textarea id="job-description" name="job_description" rows="4" required></textarea>
+
+        <label for="file-input">Upload CVs:</label>
+        <input type="file" id="file-input" name="cvs" multiple accept=".pdf,.docx" required onchange="validateFiles()">
+        <p id="file-error" style="color: red; display: none;">Only PDF and DOCX files are allowed.</p>
+
+        <button type="submit">Analyze CVs</button>
+    </form>
+
+    <!-- Container for the analysis summary -->
+    <div id="analysis-summary"></div>
+
+    <!-- Container for the download link -->
+    <div id="download-link-container"></div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
